@@ -14,11 +14,13 @@ class PlaceCell: UITableViewCell {
     @IBOutlet weak var imgPlace: UIImageView!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblLocation: UILabel!
+    @IBOutlet weak var lblRating: UILabel!
     
     //custom functions
     func update(place: GMSPlace){
         lblName.text = place.name
         lblLocation.text = place.formattedAddress
+        lblRating.text = place.rating.description
         loadFirstPhotoForPlace(placeID: place.placeID)
     }
     func loadFirstPhotoForPlace(placeID: String) {
