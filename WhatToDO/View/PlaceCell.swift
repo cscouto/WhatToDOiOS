@@ -19,5 +19,28 @@ class PlaceCell: UITableViewCell {
     func update(place: GMSPlace){
         lblName.text = place.name
         lblLocation.text = place.formattedAddress
+        loadFirstPhotoForPlace(placeID: place.placeID)
+    }
+    func loadFirstPhotoForPlace(placeID: String) {
+        GMSPlacesClient.shared().lookUpPhotos(forPlaceID: placeID) { (photos, error) -> Void in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            } else {
+                if let firstPhoto = photos?.results.first {
+                    self.loadImageForMetadata(photoMetadata: firstPhoto)
+                }
+            }
+        }
+    }
+    
+    func loadImageForMetadata(photoMetadata: GMSPlacePhotoMetadata) {
+        GMSPlacesClient.shared().loadPlacePhoto(photoMetadata, callback: {
+            (photo, error) -> Void in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            } else {
+                self.imgPlace.image = photo;
+            }
+        })
     }
 }
