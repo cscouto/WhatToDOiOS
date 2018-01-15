@@ -8,67 +8,47 @@
 
 import UIKit
 import GooglePlaces
-import GooglePlacePicker
 
 class PlacesVC: UIViewController {
+    //outlets
+    @IBOutlet weak var tableView: UITableView!
     
+    //vars
     var placesClient: GMSPlacesClient!
     let locationManager = CLLocationManager()
+    var places: [GMSPlaceLikelihood]?
     
-    // Add a pair of UILabels in Interface Builder, and connect the outlets to these variables.
-    @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var addressLabel: UILabel!
-    
+    //class functions
     override func viewDidLoad() {
         super.viewDidLoad()
         placesClient = GMSPlacesClient.shared()
         locationManager.requestWhenInUseAuthorization()
+        getNearbyPlaces()
     }
     
-    // Add a UIButton in Interface Builder, and connect the action to this function.
-    @IBAction func getCurrentPlace(_ sender: UIButton) {
-       /* let center = CLLocationCoordinate2D(latitude: 37.788204, longitude: -122.411937)
-        let northEast = CLLocationCoordinate2D(latitude: center.latitude + 0.001, longitude: center.longitude + 0.001)
-        let southWest = CLLocationCoordinate2D(latitude: center.latitude - 0.001, longitude: center.longitude - 0.001)
-        let viewport = GMSCoordinateBounds(coordinate: northEast, coordinate: southWest)
-        let config = GMSPlacePickerConfig(viewport: viewport)
-        let placePicker = GMSPlacePicker(config: config)
-        
-        placePicker.pickPlace(callback: {(place, error) -> Void in
+    //custom functions
+    func getNearbyPlaces(){
+        placesClient.currentPlace(callback: { (placeLikelihoodList, error) -> Void in
             if let error = error {
                 print("Pick Place error: \(error.localizedDescription)")
                 return
             }
-            
-            if let place = place {
-                self.nameLabel.text = place.name
-                self.addressLabel.text = place.formattedAddress?.components(separatedBy: ", ")
-                    .joined(separator: "\n")
-            } else {
-                self.nameLabel.text = "No place selected"
-                self.addressLabel.text = ""
-            }
-        })*/
-        
-        placesClient.currentPlace(callback: { (placeLikelihoodList, error) -> Void in
-//            if let error = error {
-//                print("Pick Place error: \(error.localizedDescription)")
-//                return
-//            }
-            
-            self.nameLabel.text = "No current place"
-            self.addressLabel.text = ""
-            
             if let placeLikelihoodList = placeLikelihoodList {
-                for likelihood in placeLikelihoodList.likelihoods {
-                    let place = likelihood.place
-                    print("Current Place name \(place.name) at likelihood \(likelihood.likelihood)")
-                    print("Current Place address \(place.formattedAddress)")
-                    print("Current Place attributions \(place.attributions)")
-                    print("Current PlaceID \(place.placeID)")
-                }
+                self.places = placeLikelihoodList.likelihoods
+                self.tableView.reloadData()
             }
         })
     }
 }
 
+extension PlacesVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return places != nil ? places!.count : 0
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceCell", for: indexPath) as! PlaceCell
+        let place = places![indexPath.row].place
+        cell.update(place: place)
+        return cell
+    }
+}

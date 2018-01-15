@@ -11,7 +11,7 @@
 		08B033F8949B0A86CBB98BFF /* Pods_WhatToDOUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302953517C7D1675C0C486C9 /* Pods_WhatToDOUITests.framework */; };
 		238FE5B46B5EBFD21FDCDBA5 /* Pods_WhatToDO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB643A32035D53D221448A72 /* Pods_WhatToDO.framework */; };
 		292EB33D200D1EEE00A88A81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292EB33C200D1EEE00A88A81 /* AppDelegate.swift */; };
-		292EB33F200D1EEE00A88A81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292EB33E200D1EEE00A88A81 /* ViewController.swift */; };
+		292EB33F200D1EEE00A88A81 /* PlacesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292EB33E200D1EEE00A88A81 /* PlacesVC.swift */; };
 		292EB342200D1EEE00A88A81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 292EB340200D1EEE00A88A81 /* Main.storyboard */; };
 		292EB345200D1EEE00A88A81 /* WhatToDO.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 292EB343200D1EEE00A88A81 /* WhatToDO.xcdatamodeld */; };
 		292EB347200D1EEE00A88A81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 292EB346200D1EEE00A88A81 /* Assets.xcassets */; };
@@ -19,6 +19,7 @@
 		292EB355200D1EEE00A88A81 /* WhatToDOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292EB354200D1EEE00A88A81 /* WhatToDOTests.swift */; };
 		292EB360200D1EEE00A88A81 /* WhatToDOUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292EB35F200D1EEE00A88A81 /* WhatToDOUITests.swift */; };
 		292EB36E200D2C9000A88A81 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292EB36D200D2C9000A88A81 /* Keys.swift */; };
+		292EB372200D3AD600A88A81 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292EB371200D3AD600A88A81 /* PlaceCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +42,7 @@
 /* Begin PBXFileReference section */
 		292EB339200D1EEE00A88A81 /* WhatToDO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatToDO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		292EB33C200D1EEE00A88A81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		292EB33E200D1EEE00A88A81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		292EB33E200D1EEE00A88A81 /* PlacesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesVC.swift; sourceTree = "<group>"; };
 		292EB341200D1EEE00A88A81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		292EB344200D1EEE00A88A81 /* WhatToDO.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WhatToDO.xcdatamodel; sourceTree = "<group>"; };
 		292EB346200D1EEE00A88A81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -54,6 +55,7 @@
 		292EB35F200D1EEE00A88A81 /* WhatToDOUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatToDOUITests.swift; sourceTree = "<group>"; };
 		292EB361200D1EEE00A88A81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		292EB36D200D2C9000A88A81 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		292EB371200D3AD600A88A81 /* PlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
 		302953517C7D1675C0C486C9 /* Pods_WhatToDOUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatToDOUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CDFD3C959D4FC6405A2E3CC /* Pods-WhatToDO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToDO.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhatToDO/Pods-WhatToDO.release.xcconfig"; sourceTree = "<group>"; };
 		564730C17EE6B6193A6CCD52 /* Pods-WhatToDO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToDO.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhatToDO/Pods-WhatToDO.debug.xcconfig"; sourceTree = "<group>"; };
@@ -118,9 +120,8 @@
 		292EB33B200D1EEE00A88A81 /* WhatToDO */ = {
 			isa = PBXGroup;
 			children = (
-				292EB33C200D1EEE00A88A81 /* AppDelegate.swift */,
-				292EB33E200D1EEE00A88A81 /* ViewController.swift */,
-				292EB340200D1EEE00A88A81 /* Main.storyboard */,
+				292EB370200D3A6E00A88A81 /* Controller */,
+				292EB36F200D3A6800A88A81 /* View */,
 				292EB346200D1EEE00A88A81 /* Assets.xcassets */,
 				292EB348200D1EEE00A88A81 /* LaunchScreen.storyboard */,
 				292EB34B200D1EEE00A88A81 /* Info.plist */,
@@ -146,6 +147,24 @@
 				292EB361200D1EEE00A88A81 /* Info.plist */,
 			);
 			path = WhatToDOUITests;
+			sourceTree = "<group>";
+		};
+		292EB36F200D3A6800A88A81 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				292EB340200D1EEE00A88A81 /* Main.storyboard */,
+				292EB371200D3AD600A88A81 /* PlaceCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		292EB370200D3A6E00A88A81 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				292EB33C200D1EEE00A88A81 /* AppDelegate.swift */,
+				292EB33E200D1EEE00A88A81 /* PlacesVC.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		71FA46876C29C5A7EAF0F60F /* Pods */ = {
@@ -467,8 +486,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				292EB345200D1EEE00A88A81 /* WhatToDO.xcdatamodeld in Sources */,
+				292EB372200D3AD600A88A81 /* PlaceCell.swift in Sources */,
 				292EB36E200D2C9000A88A81 /* Keys.swift in Sources */,
-				292EB33F200D1EEE00A88A81 /* ViewController.swift in Sources */,
+				292EB33F200D1EEE00A88A81 /* PlacesVC.swift in Sources */,
 				292EB33D200D1EEE00A88A81 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
