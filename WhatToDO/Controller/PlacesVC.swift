@@ -8,6 +8,7 @@
 
 import UIKit
 import GooglePlaces
+import GooglePlacePicker
 
 class PlacesVC: UIViewController {
     //outlets
@@ -26,6 +27,17 @@ class PlacesVC: UIViewController {
         getNearbyPlaces()
     }
     
+    //actions
+    @IBAction func showMap(_ sender: UIBarButtonItem) {
+        let config = GMSPlacePickerConfig(viewport: nil)
+        let placePicker = GMSPlacePickerViewController(config: config)
+        UINavigationBar.appearance().barTintColor = UIColor(hex: "BC312F")
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        placePicker.delegate = self
+        present(placePicker, animated: true, completion: nil)
+    }
+    
     //custom functions
     func getNearbyPlaces(){
         placesClient.currentPlace(callback: { (placeLikelihoodList, error) -> Void in
@@ -38,6 +50,15 @@ class PlacesVC: UIViewController {
                 self.tableView.reloadData()
             }
         })
+    }
+}
+
+extension PlacesVC: GMSPlacePickerViewControllerDelegate {
+    func placePicker(_ viewController: GMSPlacePickerViewController, didPick place: GMSPlace) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    func placePickerDidCancel(_ viewController: GMSPlacePickerViewController) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

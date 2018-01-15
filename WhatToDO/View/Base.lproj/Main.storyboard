@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k8l-Dg-4hx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kNa-R3-7Dk">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -22,11 +22,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="PlacesVC" customModule="WhatToDO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yvQ-To-agJ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -111,27 +111,34 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="yvQ-To-agJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="1g8-uz-Ysv"/>
-                            <constraint firstItem="yvQ-To-agJ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="O41-Ea-kcy"/>
                             <constraint firstItem="yvQ-To-agJ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="br2-CQ-HOt"/>
                             <constraint firstItem="yvQ-To-agJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dhr-p4-oNT"/>
+                            <constraint firstAttribute="bottom" secondItem="yvQ-To-agJ" secondAttribute="bottom" id="rVL-PD-9hN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Places Nearby" id="BO5-Kv-6hU"/>
+                    <navigationItem key="navigationItem" title="Places Nearby" id="BO5-Kv-6hU">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="placeholder" id="0c6-cu-AZr">
+                            <connections>
+                                <action selector="showMap:" destination="BYZ-38-t0r" id="14M-Uk-hFx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="yvQ-To-agJ" id="tU8-ur-F2Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="360.80000000000001" y="29.23538230884558"/>
+            <point key="canvasLocation" x="700" y="29.23538230884558"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Nearby-->
         <scene sceneID="HS1-rM-e3X">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="k8l-Dg-4hx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Nearby" image="tabNearby" selectedImage="tabNearbySelected" id="SMf-kQ-Sm5"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="I9z-r7-riM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="I9z-r7-riM">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -147,10 +154,31 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R8t-2c-XEw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-417" y="29"/>
+            <point key="canvasLocation" x="-79.200000000000003" y="28.335832083958024"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="bxf-4O-6No">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="kNa-R3-7Dk" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uab-lw-y6Y">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.73725490199999999" green="0.19215686269999999" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="k8l-Dg-4hx" kind="relationship" relationship="viewControllers" id="TyY-3X-Bs6"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b4s-6I-zSX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-943" y="29"/>
         </scene>
     </scenes>
     <resources>
+        <image name="placeholder" width="25" height="25"/>
         <image name="star" width="128" height="128"/>
+        <image name="tabNearby" width="25" height="25"/>
+        <image name="tabNearbySelected" width="25" height="25"/>
     </resources>
 </document>
