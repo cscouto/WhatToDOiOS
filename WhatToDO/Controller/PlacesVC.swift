@@ -10,9 +10,10 @@ import UIKit
 import GooglePlaces
 import GooglePlacePicker
 
-class ViewController: UIViewController {
+class PlacesVC: UIViewController {
     
     var placesClient: GMSPlacesClient!
+    let locationManager = CLLocationManager()
     
     // Add a pair of UILabels in Interface Builder, and connect the outlets to these variables.
     @IBOutlet var nameLabel: UILabel!
@@ -21,6 +22,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         placesClient = GMSPlacesClient.shared()
+        locationManager.requestWhenInUseAuthorization()
     }
     
     // Add a UIButton in Interface Builder, and connect the action to this function.
@@ -49,20 +51,21 @@ class ViewController: UIViewController {
         })*/
         
         placesClient.currentPlace(callback: { (placeLikelihoodList, error) -> Void in
-            if let error = error {
-                print("Pick Place error: \(error.localizedDescription)")
-                return
-            }
+//            if let error = error {
+//                print("Pick Place error: \(error.localizedDescription)")
+//                return
+//            }
             
             self.nameLabel.text = "No current place"
             self.addressLabel.text = ""
             
             if let placeLikelihoodList = placeLikelihoodList {
-                let place = placeLikelihoodList.likelihoods.first?.place
-                if let place = place {
-                    self.nameLabel.text = place.name
-                    self.addressLabel.text = place.formattedAddress?.components(separatedBy: ", ")
-                        .joined(separator: "\n")
+                for likelihood in placeLikelihoodList.likelihoods {
+                    let place = likelihood.place
+                    print("Current Place name \(place.name) at likelihood \(likelihood.likelihood)")
+                    print("Current Place address \(place.formattedAddress)")
+                    print("Current Place attributions \(place.attributions)")
+                    print("Current PlaceID \(place.placeID)")
                 }
             }
         })
